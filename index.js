@@ -47,7 +47,7 @@ BUTTON.addEventListener('click', () => {
     );
     cleanInputs(INPUT, TEXT);
 
-    COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments)
+    COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments);
 });
 
-COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments)
+COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments);
