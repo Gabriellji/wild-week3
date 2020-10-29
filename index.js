@@ -19,7 +19,19 @@ const cleanInputs = (input, text) => {
     text.value = '';
 }
 
-let commentsToHtml;
+function createAListOfCommentsFromArray(array) {
+    let arrayToHtml = ''
+    for (let i = 0; i < array.length; i++) {
+      arrayToHtml += `
+      <br>
+      <h4>${array[i].user} said:</h4>
+      <p>${array[i].text}</p>
+      <br>
+      <hr>
+    `
+    }
+    return arrayToHtml;
+  }
 
 
 BUTTON.addEventListener('click', () => {
@@ -34,31 +46,8 @@ BUTTON.addEventListener('click', () => {
         }
     );
     cleanInputs(INPUT, TEXT);
-    console.log(listOfComments);
 
-
-    for(let i =0; i < listOfComments.length; i++) {
-        commentsToHtml += `<br>
-        <h4>${listOfComments[i].user}said:</h4>
-        <p>${listOfComments[i].text}</p>
-        <br>
-        `
-    }
-
-    COMENTS_CONTAINER.innerHTML = commentsToHtml;
+    COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments)
 });
 
-//////////////
-
-for(let i =0; i < listOfComments.length; i++) {
-    commentsToHtml += `<br>
-    <h4>${listOfComments[i].user}said:</h4>
-    <p>${listOfComments[i].text}</p>
-    <br>
-    `
-}
-
-COMENTS_CONTAINER.innerHTML = commentsToHtml;
-
-///////////////
-
+COMENTS_CONTAINER.innerHTML = createAListOfCommentsFromArray(listOfComments)
