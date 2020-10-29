@@ -1,7 +1,7 @@
 let INPUT = document.querySelector('#user');
 const BUTTON = document.querySelector('#button');
 const TEXT = document.querySelector('#text');
-let COMENTS_CONTAINER = document.querySelector('#comment');
+const COMENTS_CONTAINER = document.querySelector('#comment');
 
 let listOfComments = [
     {
@@ -9,14 +9,23 @@ let listOfComments = [
         text: 'really long comment'
     },
     {
-        user: 'Lucke',
+        user: 'Luck',
         text: 'Llalala'
     }
 ];
 
+const cleanInputs = (input, text) => {
+    input.value = '';
+    text.value = '';
+}
+
+let commentsToHtml;
+
+
 BUTTON.addEventListener('click', () => {
     let inputValue = INPUT.value;
     let textValue = TEXT.value;
+    commentsToHtml = '';
 
     listOfComments.push(
         {
@@ -24,17 +33,32 @@ BUTTON.addEventListener('click', () => {
         text: textValue,
         }
     );
+    cleanInputs(INPUT, TEXT);
     console.log(listOfComments);
-    INPUT.value = '';
-    TEXT.value = '';
-})
 
-COMENTS_CONTAINER.innerHTML = `<br>
-<h4>User name said:</h4>
-<p>Bfegwryt rwtywruwry tyye6u7 rtyrwyr</p>
-<br>
-<h4>User name said:</h4>
-<p>hwryjrsyujsyrj etyjykjtdukjduy</p>
-<br>
-<h4>User name said:</h4>
-<p>Bfegwry FGFGJKJ tyye6u7 rtyrwyr</p>`
+
+    for(let i =0; i < listOfComments.length; i++) {
+        commentsToHtml += `<br>
+        <h4>${listOfComments[i].user}said:</h4>
+        <p>${listOfComments[i].text}</p>
+        <br>
+        `
+    }
+
+    COMENTS_CONTAINER.innerHTML = commentsToHtml;
+});
+
+//////////////
+
+for(let i =0; i < listOfComments.length; i++) {
+    commentsToHtml += `<br>
+    <h4>${listOfComments[i].user}said:</h4>
+    <p>${listOfComments[i].text}</p>
+    <br>
+    `
+}
+
+COMENTS_CONTAINER.innerHTML = commentsToHtml;
+
+///////////////
+
